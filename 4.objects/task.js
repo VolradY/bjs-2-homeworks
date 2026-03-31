@@ -10,14 +10,17 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
 Student.prototype.addMarks = function (...marks) {
-    if (student1.hasOwnProperty('marks')) {
-      student1.marks.push(...marks);
+    if (!this.marks) {
+    console.log("Ошибка: Студент отчислен");
+    return;
     }
+
+    this.marks.push(...marks);
 }
 
 Student.prototype.getAverage = function () {
     if (!this.marks || this.marks.length === 0) {
-      return 0;
+        return 0;
     }
 
     const sum = this.marks.reduce((acc, curr) => acc + curr, 0);
